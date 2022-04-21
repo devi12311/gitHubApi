@@ -1,0 +1,22 @@
+version: '1'
+services:
+  paperclicks_task_frontend:
+      container_name: FE
+      build: ./frontend/
+      networks:
+        - jonel1
+      environment:
+        - SERVICE_NAME=frontend   
+      ports:
+        - 3000:3000
+  paperclicks_task_backend:
+    container_name: BE
+    build: ./be/
+    ports:
+      - "8080:8080"
+    environment:
+      - DEBUG=1
+    networks:
+      - jonel1
+networks:
+    jonel1:
